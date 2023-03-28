@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>extremum-module-parent</artifactId>
+        <groupId>io.extremum</groupId>
+        <version>${extremum.version}</version>
+        <relativePath>../extremum-module-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>extremum-core-test</artifactId>
+    <description>Contains test infrastructure/support that depends on extremum core</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.extremum</groupId>
+            <artifactId>extremum-common-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.extremum</groupId>
+            <artifactId>extremum-test-harness</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

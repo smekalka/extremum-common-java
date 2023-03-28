@@ -1,0 +1,33 @@
+redis:
+  cacheSize: 5
+  idleTime: 1
+
+mongo:
+  service-db-name: test
+  descriptors-db-name: descriptors
+  model-packages: abc,common.dao.mongo,io.extremum.common.descriptor.end2end.fixture
+  repository-packages: abc,common.dao.mongo,io.extremum.common.descriptor.end2end.fixture
+
+extremum:
+  descriptor:
+    storage:
+      type: mongo
+  everything:
+    storage:
+      type: mongo
+
+descriptors:
+  descriptorsMapName: descriptors
+  internalIdsMapName: descriptors_internalId_idx
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org.springframework.data.mongodb.core: INFO
+
+custom:
+  model:
+    package-names: io.extremum

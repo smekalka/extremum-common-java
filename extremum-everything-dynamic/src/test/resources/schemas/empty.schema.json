@@ -1,0 +1,5 @@
+{
+  "$id": "an_id_for_an_empty_schema",
+  "type": "object",
+  "properties": {}
+}

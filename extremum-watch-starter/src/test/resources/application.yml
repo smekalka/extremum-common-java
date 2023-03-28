@@ -1,0 +1,39 @@
+redis:
+  cacheSize: 5
+  idleTime: 1
+
+mongo:
+  service-db-name: test
+  descriptors-db-name: descriptors
+  repository-packages: io.extremum.watch.end2end.fixture
+
+descriptors:
+  descriptorsMapName: descriptors
+  internalIdsMapName: descriptors_internalId_idx
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org.springframework.web : DEBUG
+
+custom:
+  field-destroyer:
+    analyzable-package-prefix: com.cybernation.testservice
+  model:
+    package-names: io.extremum.watch.end2end.fixture
+
+extremum:
+  application:
+    host: http://localhost:8080
+  descriptor:
+    storage:
+      type: mongo
+  everything:
+    storage:
+      type: mongo
+  watch:
+    storage:
+      type: mongo

@@ -1,0 +1,35 @@
+redis:
+  cacheSize: 5
+  idleTime: 1
+
+mongo:
+  service-db-name: test
+  descriptors-db-name: descriptors
+
+elasticsearch:
+  repository-packages: io.extremum.elasticsearch.dao
+
+descriptors:
+  descriptorsMapName: descriptors
+  iriMapName: iris
+  internalIdsMapName: descriptors_internalId_idx
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  http:
+    log-request-details: true
+
+logging:
+  level:
+    org.springframework.web: TRACE
+    tracer: TRACE
+
+extremum:
+  descriptor:
+    storage:
+      type: mongo
+  everything:
+    storage:
+      type: mongo

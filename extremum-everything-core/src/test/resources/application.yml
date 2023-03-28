@@ -1,0 +1,32 @@
+redis:
+  cacheSize: 5
+  idleTime: 1
+
+mongo:
+  service-db-name: test
+  descriptors-db-name: descriptors
+  repository-packages: abc,common.dao.mongo
+
+descriptors:
+  descriptorsMapName: descriptors
+  internalIdsMapName: descriptors_internalId_idx
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org.springframework.web : DEBUG
+
+custom:
+  field-destroyer:
+    analyzable-package-prefix: com.cybernation.testservice
+
+extremum:
+  descriptor:
+    storage:
+      type: mongo
+  everything:
+    storage:
+      type: mongo

@@ -1,0 +1,27 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 18080
+redis:
+  uri: redis://mission.public:6379
+  password: 123
+mongo:
+  uri: mongodb://control.public:27017
+  service-db-uri: mongodb://control.public:27017
+  service-db-name: example
+  descriptors-db-name: example
+  descriptors-db-uri: mongodb://control.public:27017
+  repository-packages: io.extremum.exampleproject.repository
+descriptors:
+  descriptorsMapName: descriptors
+  internalIdsMapName: internalIds
+  collectionDescriptorsMapName: collection_descriptors
+  collectionCoordinatesMapName: collection_descriptors_coordinates_idx
+custom:
+  model:
+    package-names: io.extremum.exampleproject.model
+  repositories:
+    package-names: io.extremum.exampleproject.repository
+  field-destroyer:
+    analyzable-package-prefix: io.extremum.exampleproject

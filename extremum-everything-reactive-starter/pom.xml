@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.extremum</groupId>
+        <artifactId>extremum-module-parent</artifactId>
+        <version>${extremum.version}</version>
+        <relativePath>../extremum-module-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>extremum-everything-reactive-starter</artifactId>
+
+    <description>Spring Boot starter that adds support for everything-everything framework
+        (reactive flavor) to a Spring Boot application</description>
+
+    <properties>
+        <testcoverage.minimum>0.21</testcoverage.minimum>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.extremum</groupId>
+            <artifactId>extremum-everything-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.extremum</groupId>
+            <artifactId>extremum-core-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-jcl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>

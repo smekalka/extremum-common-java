@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.extremum</groupId>
+        <artifactId>extremum-module-parent</artifactId>
+        <version>${extremum.version}</version>
+        <relativePath>../extremum-module-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>extremum-tx-starter</artifactId>
+
+    <properties>
+        <testcoverage.minimum>0.05</testcoverage.minimum>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.extremum</groupId>
+            <artifactId>extremum-everything-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.extremum</groupId>
+            <artifactId>extremum-test-harness</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

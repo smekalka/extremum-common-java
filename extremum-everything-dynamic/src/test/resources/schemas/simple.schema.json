@@ -1,0 +1,25 @@
+{
+  "$id": "an_id_for_simple_schema_json",
+  "description": "simple schema for testing the DirectoryBasedSchemaProvider in the DirectoryBasedSchemaProviderTest test",
+  "title": "TestDynamicModel",
+  "type": "object",
+  "properties": {
+    "field1": {
+      "type": "string"
+    },
+    "field2": {
+      "type": "number"
+    },
+    "fieldDate1": {
+      "type": "string",
+      "format": "extremum-date-time"
+    },
+    "fieldDate2": {
+      "type": "string",
+      "format": "extremum-date-time"
+    },
+    "fieldDate3_noCybernatedDate": {
+      "type": "string"
+    }
+  }
+}

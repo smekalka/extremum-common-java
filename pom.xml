@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.extremum</groupId>
+    <artifactId>extremum-common-project</artifactId>
+    <packaging>pom</packaging>
+    <version>${extremum.version}</version>
+    <name>Root extremum-common POM</name>
+    <description>This POM serves as a root of extremum-common multimodule project. Also, it defines release-related
+        settings (scm and distributionManagement).
+        You almost never need to use this module as a parent.
+        If you need to add a new module to extremum-common, please choose extremum-module-parent as its parent.
+        If want to have some extremum parent as a parent of your application, please use extremum-app-parent.
+    </description>
+
+    <properties>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <extremum.version>2.1.20-SNAPSHOT</extremum.version>
+    </properties>
+    <modules>
+        <module>extremum-bom</module>
+        <module>extremum-module-parent</module>
+        <module>extremum-app-parent</module>
+        <module>extremum-shared-models</module>
+        <module>authentication-api</module>
+        <module>extremum-test-harness</module>
+        <module>extremum-mongo-db-factory</module>
+        <module>extremum-descriptors</module>
+        <module>extremum-common-starter</module>
+        <module>extremum-core-test</module>
+        <module>extremum-security</module>
+        <module>extremum-jpa-starter</module>
+        <!--        <module>extremum-elasticsearch-starter</module>-->
+        <module>extremum-everything-core</module>
+        <module>extremum-everything-starter</module>
+        <module>extremum-everything-reactive-starter</module>
+        <module>extremum-watch-starter</module>
+        <module>extremum-batch-service</module>
+        <module>extremum-jackson-mapper</module>
+        <module>extremum-annotations</module>
+        <module>extremum-everything-dynamic</module>
+        <module>extremum-shared-models-grpc</module>
+        <module>extremum-datetime</module>
+        <module>extremum-rdf</module>
+        <module>extremum-model-starter</module>
+        <module>extremum-graphql-starter</module>
+        <module>extremum-sku</module>
+        <module>extremum-tx-starter</module>
+    </modules>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jfrog-plugins-release</id>
+            <name>plugins-release</name>
+            <url>https://oss.jfrog.org/artifactory/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <repositories>
+        <repository>
+            <id>artifactory.extremum.monster-maven</id>
+            <url>https://artifactory.extremum.monster/artifactory/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>3.2.3</version>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                            </deployProperties>
+                            <artifactory>
+                                <includeEnvVars>true</includeEnvVars>
+                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
+                                <timeoutSec>60</timeoutSec>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>${artifactoryUrl}</contextUrl>
+                                <username>${username}</username>
+                                <password>${password}</password>
+                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <repoKey>extremum-releases</repoKey>
+                                <snapshotRepoKey>extremum-snapshots</snapshotRepoKey>
+                            </publisher>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

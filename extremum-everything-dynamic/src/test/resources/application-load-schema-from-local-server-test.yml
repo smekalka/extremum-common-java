@@ -1,0 +1,11 @@
+dynamic-models:
+  schema:
+    location: local
+    pointer:
+      schema-path: /
+      schema-name: like-network-access-schema
+      local:
+        base-directory: /path/to/local/schemas/directory
+  local-schema-server:
+    port: 1111
+    context-path: /ctx/

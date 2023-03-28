@@ -1,0 +1,40 @@
+redis:
+  cacheSize: 5
+  idleTime: 1
+
+mongo:
+  service-db-name: test
+  descriptors-db-name: descriptors
+
+jpa:
+  username: postgres
+  entity-packages: io.extremum.jpa.model, io.extremum.sharedmodels.basic
+  repository-packages: io.extremum.jpa.dao
+  generate-ddl: true
+  show-sql: true
+  additional:
+    hibernate.globally_quoted_identifiers: true
+    hibernate.physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    hibernate.dialect: io.extremum.jpa.dialect.ExtremumPostgreSQLDialect
+
+descriptors:
+  descriptorsMapName: descriptors
+  internalIdsMapName: descriptors_internalId_idx
+
+extremum:
+  descriptor:
+    storage:
+      type: mongo
+  everything:
+    storage:
+      type: mongo
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  main:
+    allow-bean-definition-overriding: true

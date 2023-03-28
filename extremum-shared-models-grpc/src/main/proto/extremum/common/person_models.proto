@@ -1,0 +1,203 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+import "extremum/common/common_models.proto";
+
+option java_multiple_files = true;
+option java_package = "io.extremum.sharedmodels.proto.common";
+
+message ProtoPersonRequestDto {
+    oneof name {
+        string string_value = 1;
+        ProtoName object_value = 2;
+    }
+    ProtoGender gender = 3;
+    int32 age = 4;
+    ProtoBirth birth = 5;
+    string nationality = 6;
+    repeated ProtoLanguage languages = 7;
+    string hometown = 8;
+    repeated ProtoCategorizedAddress addresses = 9;
+    repeated ProtoContact contacts = 10;
+    repeated ProtoPersonPosition positions = 11;
+    string relationship = 12;
+    repeated ProtoMedia images = 13;
+    repeated bytes documents = 14;
+}
+
+message ProtoName {
+    oneof full {
+        string string_full = 1;
+        ProtoMultilingual object_full = 2;
+    }
+    oneof preferred {
+        string string_preferred = 3;
+        ProtoMultilingual object_preferred = 4;
+    }
+    oneof first {
+        string string_first = 5;
+        ProtoMultilingual object_first = 6;
+    }
+    oneof middle {
+        string string_middle = 7;
+        ProtoMultilingual object_middle = 8;
+    }
+    oneof last {
+        string string_last = 9;
+        ProtoMultilingual object_last = 10;
+    }
+    oneof maiden {
+        string string_maiden = 11;
+        ProtoMultilingual object_maiden = 12;
+    }
+    oneof patronymic {
+        string string_patronymic = 13;
+        ProtoMultilingual object_patronymic = 14;
+    }
+    oneof matronymic {
+        string string_matronymic = 15;
+        ProtoMultilingual object_matronymic = 16;
+    }
+}
+
+enum ProtoGender {
+    UNKNOWN = 0;
+    MALE = 1;
+    FEMALE = 2;
+}
+
+message ProtoBirth {
+    ProtoZonedTimestamp date = 1;
+    string place = 2;
+}
+
+message ProtoLanguage {
+    string languageTag = 1;
+    ProtoLevel level = 2;
+
+    enum ProtoLevel {
+        UNKNOWN = 0;
+        BEGINNER = 1;
+        ELEMENTARY = 2;
+        INTERMEDIATE = 3;
+        UPPER_INTERMEDIATE = 4;
+        ADVANCED = 5;
+        PROFICIENCY = 6;
+    }
+}
+
+message ProtoCategorizedAddress {
+    string category = 1;
+    string caption = 2;
+    oneof address {
+        string string_value = 3;
+        ProtoMultilingual multilingual_value = 4;
+        ProtoAddress object_value = 5;
+    }
+}
+
+message ProtoAddress {
+    oneof name {
+        string string_value = 1;
+        ProtoMultilingual multilingual_value = 2;
+    }
+    repeated ProtoLocator locality = 3;
+}
+
+message ProtoLocator {
+    string code = 1;
+    ProtoType type = 2;
+    oneof name {
+        string string_value = 3;
+        ProtoMultilingual multilingual_value = 4;
+    }
+
+    enum ProtoType {
+        UNKNOWN = 0;
+        POSTCODE = 1;
+        GALAXY = 2;
+        CONSTELLATION = 3;
+        PLANET = 4;
+        CONTINENT = 5;
+        UNION = 6;
+        COUNTRY = 7;
+        STATE = 8;
+        REGION = 9;
+        CITY = 10;
+        STREET = 11;
+        HOUSE = 12;
+        FLOOR = 13;
+        PLATFORM = 14;
+        SECTION = 15;
+        APARTMENT = 16;
+        ENTRANCE = 17;
+        FLIGHT = 18;
+        COACH = 19;
+        ROW = 20;
+        PLACE = 21;
+    }
+}
+
+message ProtoContact {
+    string type = 1;
+    string contact = 2;
+    bool primary = 3;
+}
+
+message ProtoPersonPosition {
+    oneof company {
+        string string_company = 1;
+        ProtoMultilingual multilingual_company = 2;
+    }
+    oneof title {
+        string string_title = 3;
+        ProtoMultilingual multilingual_title = 4;
+    }
+    oneof description {
+        string string_description = 5;
+        ProtoMultilingual multilingual_description = 6;
+    }
+    ProtoTimeframe timeframe = 7;
+    oneof location {
+        string string_value = 8;
+        ProtoLocation object_value = 9;
+    }
+}
+
+message ProtoTimeframe {
+    ProtoZonedTimestamp start = 1;
+    ProtoZonedTimestamp end = 2;
+    oneof duration {
+        google.protobuf.Int32Value int_value = 3;
+        string string_value = 4;
+    }
+}
+
+message ProtoLocation {
+    string type = 1;
+    string status = 2;
+    string slug = 3;
+    string uri = 4;
+    oneof name {
+        string string_name = 5;
+        ProtoMultilingual multilingual_name = 6;
+    }
+    oneof description {
+        string string_description = 7;
+        ProtoMultilingual multilingual_description = 8;
+    }
+    oneof address {
+        string string_value = 9;
+        ProtoMultilingual multilingual_value = 10;
+        ProtoAddress object_value = 11;
+    }
+    ProtoCoordinates coordinates = 12;
+    repeated ProtoCoordinates boundary = 13;
+}
+
+message ProtoCoordinates {
+    google.protobuf.DoubleValue latitude = 1;
+    google.protobuf.DoubleValue longitude = 2;
+}

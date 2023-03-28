@@ -1,0 +1,16 @@
+{
+  "$id": "an_id_for_complex_schema_json",
+  "description": "test schema for testing the DirectoryBasedSchemaProvider in the DirectoryBasedSchemaProviderTest test",
+  "type": "object",
+  "properties": {
+    "field1": {
+      "type": "string"
+    },
+    "field2": {
+      "type": "number"
+    },
+    "field3": {
+      "$ref": "file:unknown_schema.schema.json"
+    }
+  }
+}

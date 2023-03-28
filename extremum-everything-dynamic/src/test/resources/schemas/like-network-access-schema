@@ -1,0 +1,16 @@
+{
+  "$id": "an_id_for_complex_schema_from-network",
+  "type": "object",
+  "title": "TestDynamicModelFrom-an_id_for_complex_schema_from-network",
+  "properties": {
+    "field1": {
+      "type": "string"
+    },
+    "field2": {
+      "type": "number"
+    },
+    "field3": {
+      "$ref": "path/second-like-network-schema"
+    }
+  }
+}

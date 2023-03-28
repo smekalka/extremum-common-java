@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+option java_multiple_files = true;
+option java_package = "io.extremum.sharedmodels.proto.common";
+
+message ProtoZonedTimestamp {
+    google.protobuf.Timestamp timestamp = 1;
+    string zone_id = 2;
+}
+
+message ProtoPagination {
+    int32 offset = 1;
+    int32 count = 2;
+    google.protobuf.Int64Value total = 3;
+    ProtoZonedTimestamp since = 4;
+    ProtoZonedTimestamp until = 5;
+}
+
+message ProtoAlert {
+    ProtoAlertLevelEnum level = 1;
+    string code = 2;
+    ProtoZonedTimestamp timestamp = 3;
+    string element = 4;
+    string message = 5;
+    string link = 6;
+    string traceId = 7;
+
+    enum ProtoAlertLevelEnum {
+        UNKNOWN = 0;
+        TRACE = 1;
+        DEBUG = 2;
+        INFO = 3;
+        WARNING = 4;
+        ERROR = 5;
+        FATAL = 6;
+    }
+}
+
+message ProtoDescriptor {
+    string external_id = 1;
+    string internal_id = 2;
+    string model_type = 3;
+    string storage_type = 4;
+    ProtoZonedTimestamp created = 5;
+    ProtoZonedTimestamp modified = 6;
+    google.protobuf.Int64Value version = 7;
+    bool deleted = 8;
+    ProtoDisplay display = 9;
+}
+
+message ProtoDisplay {
+    ProtoType type = 1;
+    string string_value = 2;
+    oneof caption {
+        string text_caption = 10;
+        ProtoMultilingual multilingual_caption = 11;
+    }
+    ProtoMedia icon = 12;
+    ProtoMedia splash = 13;
+
+    enum ProtoType {
+        UNKNOWN = 0;
+        STRING = 1;
+        OBJECT = 2;
+    }
+}
+
+message ProtoMedia {
+    string url = 1;
+    ProtoMediaType type = 2;
+    google.protobuf.Int32Value width = 3;
+    google.protobuf.Int32Value height = 4;
+    google.protobuf.Int32Value depth = 5;
+    oneof duration {
+        google.protobuf.Int32Value integer_duration = 6;
+        string string_duration = 7;
+    }
+    repeated ProtoMedia thumbnails = 8;
+
+    enum ProtoMediaType {
+        UNKNOWN = 0;
+        TEXT = 1;
+        IMAGE = 2;
+        AUDIO = 3;
+        VIDEO = 4;
+        APPLICATION = 5;
+        IMAGE_JPEG = 6;
+        IMAGE_GIF = 7;
+        IMAGE_PNG = 8;
+    }
+}
+
+message ProtoMultilingual {
+    /*
+        Acceptable range of key strings are equal to MultilingualLanguage enum values.
+    */
+    map<string, string> map = 1;
+}
+
+message ProtoProjection {
+    google.protobuf.Int32Value offset = 1;
+    google.protobuf.Int32Value limit = 2;
+    ProtoZonedTimestamp since = 3;
+    ProtoZonedTimestamp until = 4;
+}
+
+message ProtoResponse {
+    ProtoResponseStatusEnum status = 1;
+    google.protobuf.Int32Value code = 2;
+    ProtoZonedTimestamp timestamp = 3;
+    string requestId = 4;
+    string locale = 5;
+    repeated ProtoAlert alerts = 6;
+    bytes result = 7;
+    ProtoPagination pagination = 8;
+    enum ProtoResponseStatusEnum {
+        UNKNOWN = 0;
+        OK = 1;
+        DOING = 2;
+        WARNING = 3;
+        FAIL = 4;
+    }
+}
+
+

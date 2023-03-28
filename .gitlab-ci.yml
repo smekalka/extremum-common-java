@@ -1,0 +1,38 @@
+image: maven:3.6-openjdk-8-slim
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  MAVEN_OPTS: "-Dmaven.repo.local=./.m2/repository"
+
+services:
+  - name: docker:dind
+
+stages:
+  - test
+  - build
+  - depcheck
+
+cache:
+  paths:
+    - ./.m2/repository
+  key: "$CI_BUILD_REF_NAME"
+
+test:
+  stage: test
+  script:
+    - mvn test $MAVEN_OPTS -s $MAVEN_SETTINGS
+
+build:
+  stage: build
+  script:
+    - mvn deploy $MAVEN_OPTS  -DartifactoryUrl=${ARTIFACTORY_URL} -Dusername=${ARTIFACTORY_USER} -Dpassword=${ARTIFACTORY_PASSWORD} -DskipTests -s $MAVEN_SETTINGS
+
+depcheck:
+  stage: depcheck
+  script:
+    - mvn $MAVEN_OPTS --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true org.owasp:dependency-check-maven:aggregate
+  artifacts:
+    when: always
+    paths:
+      - target/dependency-check-report.html    

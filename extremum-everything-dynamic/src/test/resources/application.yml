@@ -1,0 +1,41 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+mongo:
+  uri: mongodb://localhost:27017
+  serviceDbName: dynmodel
+  descriptorsDbName: descriptors
+redis:
+  uri: redis://localhost:6379
+descriptors:
+  descriptorsMapName: descriptors
+  internalIdsMapName: descriptor_internal_idx
+logging:
+  level:
+    io.extremum: debug
+    org.springframework: debug
+dynamic-models:
+  schema:
+    location: github
+    pointer:
+      schema-path: /path/to/schemas
+      schema-name: simple.schema.json
+      schema-version: 1
+      github:
+        owner: owner
+        ref: ref
+        repo: repoName
+        token: githubAccessToken
+  github-webhook-listener:
+    port: 0
+    server-context: /webhooks/github/push/clear-caches
+
+extremum:
+  application:
+    host: http://localhost:8080
+  descriptor:
+    storage:
+      type: mongo
+  everything:
+    storage:
+      type: mongo
