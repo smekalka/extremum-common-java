@@ -17,6 +17,28 @@
         If want to have some extremum parent as a parent of your application, please use extremum-app-parent.
     </description>
 
+    <url>https://github.com/smekalka/extremum-common-java</url>
+    <inceptionYear>2022</inceptionYear>
+    <scm>
+        <connection>scm:https://github.com/smekalka/extremum-common-java.git</connection>
+        <developerConnection>scm:git://github.com/smekalka/extremum-common-java.git</developerConnection>
+        <url>https://github.com/smekalka/extremum-common-java</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>Business Source License 1.1</name>
+            <url>https://github.com/smekalka/extremum-common-java/blob/develop/LICENSE.md</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>urgimchak</id>
+            <name>Maksim Tyutyaev</name>
+            <email>maksim.tyutyaev@smekalka.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <spring-boot-dependencies.version>2.7.9</spring-boot-dependencies.version>
         <redisson.version>3.20.0</redisson.version>
@@ -231,11 +253,14 @@
                 <version>1.5.23</version>
             </dependency>
 
+            <!--
+                TODO актуально при наличии доступа к https://artifactory.extremum.monster/artifactory/maven/
             <dependency>
                 <groupId>com.networknt</groupId>
                 <artifactId>json-schema-validator</artifactId>
                 <version>1.0.29_patch_1</version>
             </dependency>
+            -->
 
             <dependency>
                 <groupId>com.konghq</groupId>

@@ -15,6 +15,28 @@
         If you are looking for a parent for your application, please use extremum-app-parent.
     </description>
 
+    <url>https://github.com/smekalka/extremum-common-java</url>
+    <inceptionYear>2022</inceptionYear>
+    <scm>
+        <connection>scm:https://github.com/smekalka/extremum-common-java.git</connection>
+        <developerConnection>scm:git://github.com/smekalka/extremum-common-java.git</developerConnection>
+        <url>https://github.com/smekalka/extremum-common-java</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>Business Source License 1.1</name>
+            <url>https://github.com/smekalka/extremum-common-java/blob/develop/LICENSE.md</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>urgimchak</id>
+            <name>Maksim Tyutyaev</name>
+            <email>maksim.tyutyaev@smekalka.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>1.8</java.version>
         <testcoverage.minimum>0.92</testcoverage.minimum>
@@ -100,6 +122,8 @@
                 </dependencies>
             </plugin>
 
+            <!--
+                TODO есть конфликт с версиями
             <plugin>
                 <groupId>org.gaul</groupId>
                 <artifactId>modernizer-maven-plugin</artifactId>
@@ -117,6 +141,7 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
 
             <plugin>
                 <groupId>org.jacoco</groupId>

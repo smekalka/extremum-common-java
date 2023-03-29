@@ -15,9 +15,31 @@
         If want to have some extremum parent as a parent of your application, please use extremum-app-parent.
     </description>
 
+    <url>https://github.com/smekalka/extremum-common-java</url>
+    <inceptionYear>2022</inceptionYear>
+    <scm>
+        <connection>scm:https://github.com/smekalka/extremum-common-java.git</connection>
+        <developerConnection>scm:git://github.com/smekalka/extremum-common-java.git</developerConnection>
+        <url>https://github.com/smekalka/extremum-common-java</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>Business Source License 1.1</name>
+            <url>https://github.com/smekalka/extremum-common-java/blob/develop/LICENSE.md</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>urgimchak</id>
+            <name>Maksim Tyutyaev</name>
+            <email>maksim.tyutyaev@smekalka.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-        <extremum.version>2.1.20-SNAPSHOT</extremum.version>
+        <extremum.version>3.0.0</extremum.version>
     </properties>
     <modules>
         <module>extremum-bom</module>
@@ -58,6 +80,8 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <!--
+        TODO актуально при наличии доступа к https://artifactory.extremum.monster/artifactory/maven/
     <repositories>
         <repository>
             <id>artifactory.extremum.monster-maven</id>
@@ -70,13 +94,82 @@
             </snapshots>
         </repository>
     </repositories>
+    -->
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>3.0.0</version>
             </plugin>
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>

@@ -4,6 +4,10 @@
 - Cve fixes -> [EXTREMUM-1512](https://tracker.yandex.ru/EXTREMUM-1512)
 - Remove createdBy and modifiedBy from dto
 
+## [Unreleased]
+
+## [3.0.0] (29.03.2023)
+
 ## 2.1.19 (06.03.2023)
  
 - Bug fixes and improvements
@@ -102,3 +106,6 @@ Features:
 Features:
 
 - Implement security rules provider for IAM Service -> [EXTREMUM-138](https://tracker.yandex.ru/EXTREMUM-138)
+
+[unreleased]: https://github.com/smekalka/extremum-common-java/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/smekalka/extremum-common-java/releases/tag/v3.0.0
