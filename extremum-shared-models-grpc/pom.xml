@@ -35,7 +35,7 @@
     <properties>
         <testcoverage.minimum>0.05</testcoverage.minimum>
 
-        <protobuf.version>3.7.1</protobuf.version>
+        <protobuf.version>3.23.0</protobuf.version>
         <grpc.version>1.53.0</grpc.version>
 
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -101,14 +101,6 @@
                     <pluginId>grpc-java</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.23.0:exe:${os.detected.classifier}</pluginArtifact>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -39,7 +39,7 @@
 
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-        <extremum.version>3.0.0</extremum.version>
+        <extremum.version>3.2.0-rc.1</extremum.version>
     </properties>
     <modules>
         <module>extremum-bom</module>

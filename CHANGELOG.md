@@ -6,6 +6,9 @@
 
 ## [Unreleased]
 
+- Fix Pagination
+- Add UploadWithMetadata, PartStatusMultipartUpload, ObjectMetadata
+
 ## [3.0.0] (29.03.2023)
 
 ## 2.1.19 (06.03.2023)
@@ -107,5 +110,5 @@ Features:
 
 - Implement security rules provider for IAM Service -> [EXTREMUM-138](https://tracker.yandex.ru/EXTREMUM-138)
 
-[unreleased]: https://github.com/smekalka/extremum-common-java/compare/v3.0.0...HEAD
+[unreleased]: https://github.com/smekalka/extremum-common-java/compare/v3.2.0...HEAD
 [3.0.0]: https://github.com/smekalka/extremum-common-java/releases/tag/v3.0.0
